@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: app-env     
+  labels:
+    app: keycloak-database
+    version: 14.3.0
+  name: keycloak-database
+  annotations:
+    type: database
+    domain: keycloak
+    business: security
+spec:
+  serviceName: keycloak-database-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak-database-container
+  template:
+    metadata:            
+      labels:        
+        app: keycloak-database-container
+        version: 14.3.0
+    spec:
+     
+      containers:
+        - name: keycloak-database
+          envFrom:
+            - configMapRef:
+                name: keycloak-database-configmap
+          image: amd64/postgres:14.3
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+                command:
+                - pg_isready 
+                - -U 
+                - postgres
+                - -d
+                - keycloakdb
+            failureThreshold: 5
+            periodSeconds: 10
+            timeoutSeconds: 5 
+            initialDelaySeconds: 30            
+            successThreshold: 1
+          ports:
+            - containerPort: 5432          
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: keycloak-volumes-data
+      restartPolicy: Always
+      
+      volumes:
+        - name: keycloak-volumes-data          
+          persistentVolumeClaim:                        
+            claimName: keycloak-database-volume-pvc
+

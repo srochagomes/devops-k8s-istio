@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: app-env
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-set-headers: "*"
+    nginx.ingress.kubernetes.io/affinity: "ip-hash"
+    nginx.ingress.kubernetes.io/proxy-retry-attempts: "3"
+    nginx.ingress.kubernetes.io/proxy-next-upstream: error timeout http_404
+    nginx.ingress.kubernetes.io/proxy-next-upstream-tries: "1"
+
+spec:
+  rules:
+  - host: ""
+    http:
+      paths:
+      - path: /      
+        pathType: Prefix        
+        backend:
+          service:
+            name: keycloak-service
+            port:            
+              name: http-porta-web
+         
+
+              
+            

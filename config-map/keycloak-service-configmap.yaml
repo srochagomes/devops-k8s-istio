@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: app-env
+  name: keycloak-service-configmap
+data:
+  DB_PORT: '5432'
+  DB_ADDR: '192.168.15.13'
+  DB_DATABASE: keycloakdb
+  DB_PASSWORD: keycloakpwd
+  DB_SCHEMA: public
+  DB_USER: postgres
+  DB_VENDOR: postgres
+  DB_JDBC: 'jdbc:postgresql://192.168.15.13:5432/keycloakdb'
+  KEYCLOAK_ADMIN: admin
+  KEYCLOAK_ADMIN_PASSWORD: Pa55w0rd    
+  

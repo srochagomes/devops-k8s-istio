@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:  
+  namespace: app-env     
+  labels:
+    app: keycloak-app-statefull
+    version: 21.0.2
+  name: keycloak-application
+  annotations:
+    type: app
+    domain: keycloak
+    business: security
+spec:
+  serviceName: keycloak-service
+  selector:
+    matchLabels:
+      app: keycloak-app
+  template:
+    metadata:
+      labels:
+        app: keycloak-app
+        version: 21.0.2
+    spec:
+      containers:                        
+          - name: keycloak-application-container
+            image: quay.io/keycloak/keycloak:21.0.2
+            imagePullPolicy: IfNotPresent
+            readinessProbe:
+                httpGet:
+                    path: /health/ready
+                    port: 8080
+                initialDelaySeconds: 20
+                periodSeconds: 10 
+            startupProbe:
+                httpGet:
+                    path: /health/ready
+                    port: 8080
+                periodSeconds: 10 
+                failureThreshold: 30    
+                successThreshold: 1           
+
+            livenessProbe:
+                httpGet:
+                    path: /health/live #/realms/master
+                    port: 8080                    
+                
+                initialDelaySeconds: 30
+                periodSeconds: 10 
+                failureThreshold: 5                
+                timeoutSeconds: 5                 
+                successThreshold: 1  
+                terminationGracePeriodSeconds: 180
+            envFrom:
+                - configMapRef:
+                    name: keycloak-service-configmap
+            command:
+                - /opt/keycloak/bin/kc.sh
+                - start-dev                
+                - --db postgres
+                - --db-url jdbc:postgresql://192.168.15.64:5432/keycloakdb
+                - --db-url-database keycloakdb
+                - --db-url-host 192.168.15.64
+                - --db-url-port 5432
+                - --db-username postgres
+                - --db-password keycloakpwd
+                - --db-schema public
+                - --health-enabled true
+                - --metrics-enabled true                
+                
+
+            ports:
+              - containerPort: 8080          
+      restartPolicy: Always
+
+
+
+  

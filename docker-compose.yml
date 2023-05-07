@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  db:
+    image: amd64/postgres:14.3    
+    networks:
+      - keycloak-net
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=keycloakdb
+      - POSTGRES_USER=postgres      
+      - POSTGRES_PASSWORD=keycloakpwd
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+     
+volumes:
+  postgres_data:
+      driver: local
+        
+networks:
+  keycloak-net:
+    driver: bridge
+        

@@ -1,0 +1,14 @@
+POST http://localhost:8885/api/v1/eselwer/oauth2/token
+content-type: application/json
+
+{
+    "grant_type": "password",
+    "client_id": "eselwer-admin",
+    "client_secret": "MpDq1EwelMh4FJB4h37mlvvYQiR6o5Lb",
+    "username": "desenvolvedor",
+    "password": "teste",
+    "scope": "roles email openid"
+
+}
+
+

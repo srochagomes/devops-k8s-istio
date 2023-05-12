@@ -56,14 +56,14 @@ spec:
             command:
                 - /opt/keycloak/bin/kc.sh
                 - start-dev                
-                - --db postgres
-                - --db-url jdbc:postgresql://192.168.15.64:5432/keycloakdb
-                - --db-url-database keycloakdb
-                - --db-url-host 192.168.15.64
-                - --db-url-port 5432
-                - --db-username postgres
-                - --db-password keycloakpwd
-                - --db-schema public
+                - --db $DB_VENDOR
+                - --db-url $DB_JDBC
+                - --db-url-database $DB_DATABASE
+                - --db-url-host $DB_ADDR
+                - --db-url-port $DB_PORT
+                - --db-username $DB_USER
+                - --db-password $DB_PASSWORD
+                - --db-schema $DB_SCHEMA
                 - --health-enabled true
                 - --metrics-enabled true                
                 

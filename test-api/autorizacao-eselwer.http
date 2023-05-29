@@ -1,4 +1,4 @@
-POST http://localhost:8885/api/v1/eselwer/oauth2/token
+POST http://localhost:8885/authentication/v1/identifications/token
 content-type: application/json
 
 {

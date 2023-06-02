@@ -61,12 +61,12 @@ stopAuthBase(){
 }
 
 
-pidDB= stopDatabaseKeycloak
+#pidDB= stopDatabaseKeycloak
 pidMK= stopMinikube
 pidAPIGat= stopApiGateway
 pidAuth= stopAuthBase
 
-wait $pidDB
+#wait $pidDB
 wait $pidMK
 wait $pidAPIGat
 wait $pidAuth

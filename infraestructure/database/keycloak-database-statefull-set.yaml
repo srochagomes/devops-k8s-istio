@@ -49,9 +49,9 @@ spec:
             - mountPath: /var/lib/postgresql/data
               name: keycloak-volumes-data
       restartPolicy: Always
-      
+
       volumes:
         - name: keycloak-volumes-data          
-          persistentVolumeClaim:                        
+          persistentVolumeClaim:                           
             claimName: keycloak-database-volume-pvc
 

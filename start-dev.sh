@@ -36,7 +36,7 @@ startMinikube(){
     echo "O Minikube está ativo." &
   else
     echo "O Minikube será iniciado."
-    apply "minikube start --memory=16384 --cpus=8"
+    apply "minikube start"
   fi
 
   return $!
@@ -99,7 +99,7 @@ startAuthBase(){
 }
 
 
-startDatabaseKeycloak
+#startDatabaseKeycloak
 startMinikube
 startApiGateway
 startAuthBase
@@ -107,7 +107,7 @@ startAuthBase
 echo "Aguardando os processos"
 
 
-waitService 5432
+#waitService 5432
 waitService 8885
 waitService 8887
 

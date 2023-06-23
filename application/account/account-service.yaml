@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: app-env 
+  labels:
+    app: account-app
+    version: 21.0.2
+  name: account-service
+  annotations:
+    type: service
+    domain: account
+    business: Users
+  
+spec:
+  type: LoadBalancer
+  selector:
+    app: account-app
+  ports:
+    - name: http-porta-web
+      protocol: TCP
+      port: 8080
+      targetPort: 8080  
+  sessionAffinity: "ClientIP"

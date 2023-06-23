@@ -24,6 +24,10 @@ spec:
       containers:                        
           - name: keycloak-application-container
             image: quay.io/keycloak/keycloak:21.0.2
+            args: ["start-dev"]
+            envFrom:
+                - configMapRef:                    
+                    name: keycloak-service-configmap
             imagePullPolicy: IfNotPresent
             readinessProbe:
                 httpGet:
@@ -50,23 +54,8 @@ spec:
                 timeoutSeconds: 5                 
                 successThreshold: 1  
                 terminationGracePeriodSeconds: 180
-            envFrom:
-                - configMapRef:
-                    name: keycloak-service-configmap
-            command:
-                - /opt/keycloak/bin/kc.sh
-                - start-dev                
-                - --db $DB_VENDOR
-                - --db-url $DB_JDBC
-                - --db-url-database $DB_DATABASE
-                - --db-url-host $DB_ADDR
-                - --db-url-port $DB_PORT
-                - --db-username $DB_USER
-                - --db-password $DB_PASSWORD
-                - --db-schema $DB_SCHEMA
-                - --health-enabled true
-                - --metrics-enabled true                
-                
+            
+
 
             ports:
               - containerPort: 8080          

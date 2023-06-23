@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: app-env
+  name: account-configmap
+data:  
+  DB_ADDR: '192.168.15.103'
+  DB_DATABASE: account
+  DB_USER: postgres
+  DB_PASSWORD: admin
+  DB_JDBC: 'jdbc:postgresql://192.168.15.103:5432/account'
+  

@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: app-env
+  labels:
+    app: account-app-statefull
+
+  name: account-application
+  annotations:
+    type: app
+    domain: account
+    business: Users
+spec:
+  selector:
+    matchLabels:
+      app: account-app
+  template:
+    metadata:
+      labels:
+        app: account-app
+    spec:
+      containers:
+        - name: account-application-container
+          image: srochg/account:0.0.4
+          envFrom:
+            - configMapRef:
+                name: account-configmap
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /_app-state/health/readiness
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /_app-state/health/ping
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 30
+            successThreshold: 1
+
+          livenessProbe:
+            httpGet:
+              path: /_app-state/health/liveness #/realms/master
+              port: 8080
+
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            terminationGracePeriodSeconds: 180
+
+      restartPolicy: Always

@@ -4,14 +4,24 @@ metadata:
   namespace: app-env
   name: keycloak-service-configmap
 data:
-  DB_PORT: '5435'
-  DB_ADDR: keycloak-database-service
-  DB_DATABASE: keycloakdb
-  DB_PASSWORD: keycloakpwd
-  DB_SCHEMA: public
-  DB_USER: postgres
-  DB_VENDOR: postgres
-  DB_JDBC: 'jdbc:postgresql://keycloak-database-service:5435/keycloakdb'
   KEYCLOAK_ADMIN: admin
   KEYCLOAK_ADMIN_PASSWORD: Pa55w0rd    
-  
+  KC_DB: postgres
+  KC_DB_USERNAME: postgres
+  KC_DB_PASSWORD: admin
+  KC_DB_SCHEMA: public
+  KC_DB_URL: 'jdbc:postgresql://192.168.15.103:5432/keycloakdb'
+  KC_DB_URL_DATABASE: keycloakdb
+  KC_DB_URL_HOST: '192.168.15.103'
+  KC_DB_URL_PORT: '5432'
+  KC_TRANSACTION_XA_ENABLED: 'false'
+  KC_METRICS_ENABLED: 'true'
+  KC_HEALTH_ENABLED: 'true'
+  KC_DB_POOL_INITIAL_SIZE: '10'
+  KC_DB_POOL_MAX_SIZE: '350'
+  KC_LOG_LEVEL: INFO
+  #KC_HOSTNAME_STRICT_HTTPS: 'true'
+  #KC_PROXY: 'true'  
+  #KC_HOSTNAME: 'oidc.mydomain.com'
+  #KC_HTTPS_CERTIFICATE_FILE: '/etc/ssl/tls.crt'
+  #KC_HTTPS_CERTIFICATE_KEY_FILE: '/etc/ssl/tls.crt'

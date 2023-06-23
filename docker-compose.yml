@@ -1,15 +1,15 @@
 version: "3.9"
 services:
   db:
-    image: amd64/postgres:14.3    
+    image: amd64/postgres:15.3    
     networks:
-      - keycloak-net
+      - internal-net
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=keycloakdb
+    environment:      
+      - POSTGRES_DB=db
       - POSTGRES_USER=postgres      
-      - POSTGRES_PASSWORD=keycloakpwd
+      - POSTGRES_PASSWORD=admin
     ports:
       - 5432:5432
     healthcheck:
@@ -23,6 +23,6 @@ volumes:
       driver: local
         
 networks:
-  keycloak-net:
+  internal-net:
     driver: bridge
         

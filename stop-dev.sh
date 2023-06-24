@@ -63,13 +63,13 @@ stopAuthBase(){
 
 #pidDB= stopDatabaseKeycloak
 pidMK= stopMinikube
-pidAPIGat= stopApiGateway
-pidAuth= stopAuthBase
+#pidAPIGat= stopApiGateway
+#pidAuth= stopAuthBase
 
 #wait $pidDB
 wait $pidMK
-wait $pidAPIGat
-wait $pidAuth
+#wait $pidAPIGat
+#wait $pidAuth
 
 
 echo "Ambiente Encerrado."

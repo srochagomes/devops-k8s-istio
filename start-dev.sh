@@ -101,15 +101,13 @@ startAuthBase(){
 
 #startDatabaseKeycloak
 startMinikube
-startApiGateway
-startAuthBase
+#startApiGateway
+#startAuthBase
 
-echo "Aguardando os processos"
-
-
+#echo "Aguardando os processos"
 #waitService 5432
-waitService 8885
-waitService 8887
+#waitService 8885
+#waitService 8887
 
 
 

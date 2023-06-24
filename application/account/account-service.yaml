@@ -12,7 +12,7 @@ metadata:
     business: Users
   
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: account-app
   ports:

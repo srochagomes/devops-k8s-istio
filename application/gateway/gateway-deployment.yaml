@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   namespace: app-env
   labels:
-    app: account-app-deployment
+    app: gateway-app-deployment
 
-  name: account-application
+  name: gateway-application
   annotations:
     type: app
-    domain: account
-    business: Users
+    domain: Gateway
+    business: Security
 spec:
   selector:
     matchLabels:
-      app: account-app
+      app: gateway-app
   template:
     metadata:
       labels:
-        app: account-app
+        app: gateway-app
     spec:
       containers:
-          - name: account-application-container
-            image: srochg/account:0.0.5            
+          - name: gateway-application-container
+            image: srochg/api-gateway:0.0.2
             resources:
               limits:
                 cpu: "1"
@@ -29,20 +29,9 @@ spec:
               requests:
                 cpu: "0.5"
                 memory: "512Mi"
-            env:
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: SECRET_POSTGRES_USER
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: SECRET_POSTGRES_PASSWORD
             envFrom:
               - configMapRef:
-                  name: account-configmap
+                  name: gateway-configmap
             imagePullPolicy: Always
             ports:
               - containerPort: 8080
@@ -62,7 +51,7 @@ spec:
 
             livenessProbe:
               httpGet:
-                path: /_app-state/health #/realms/master
+                path: /_app-state/health 
                 port: 8080
 
               initialDelaySeconds: 30

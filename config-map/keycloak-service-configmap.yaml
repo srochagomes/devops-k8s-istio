@@ -4,11 +4,11 @@ metadata:
   namespace: app-env
   name: keycloak-service-configmap
 data:
-  KEYCLOAK_ADMIN: admin
-  KEYCLOAK_ADMIN_PASSWORD: Pa55w0rd    
+  KEYCLOAK_ADMIN: ${KEYCLOAK_USER_ADMIN}
+  KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_USER_PWD}
   KC_DB: postgres
-  KC_DB_USERNAME: postgres
-  KC_DB_PASSWORD: admin
+  KC_DB_USERNAME: ${POSTGRES_USER}
+  KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
   KC_DB_SCHEMA: public
   KC_DB_URL: 'jdbc:postgresql://192.168.15.103:5432/keycloakdb'
   KC_DB_URL_DATABASE: keycloakdb

@@ -3,18 +3,17 @@ kind: Service
 metadata:
   namespace: app-env 
   labels:
-    app: keycloak-app
-    version: 21.0.2
-  name: keycloak-service
+    app: auth-server-app    
+  name: auth-server-service
   annotations:
     type: service
-    domain: keycloak
-    business: security
+    domain: Authorizer
+    business: Security
   
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
-    app: keycloak-app
+    app: auth-server-app
   ports:
     - name: http-porta-web
       protocol: TCP

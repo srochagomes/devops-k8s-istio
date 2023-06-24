@@ -1,10 +1,10 @@
-POST http://localhost:8885/authentication/v1/identifications/token
+POST http://192.168.39.209:30041/authentication/v1/identifications/token
 content-type: application/json
 
 {
     "grant_type": "client_credentials",
     "client_id": "eselwer-admin",
-    "client_secret": "MpDq1EwelMh4FJB4h37mlvvYQiR6o5Lb",
+    "client_secret": "TiKbbV64bkGqW7d3hmsFHPCqf1nqiVtV",
     "scope": "email roles"
 
 }

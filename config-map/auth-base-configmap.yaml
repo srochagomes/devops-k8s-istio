@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: app-env
+  name: auth-base-configmap
+data:  
+  PROFILE: prod
+  PORT: '8080'
+  KEYCLOAK_ADDRESS: 'keycloak-service.app-env.svc.cluster.local:8080'
+  KEYCLOAK_HELM: eselwer
+  LOG_LEVEL: INFO
+  KEYCLOAK_APP_CREDENTIAL_ID: ${APP_CREDENTIAL_ID}
+  KEYCLOAK_APP_CREDENTIAL_SECRET: ${APP_CREDENTIAL_SECRET}
+  
+  

@@ -5,7 +5,7 @@ content-type: application/json
     "grant_type": "client_credentials",
     "client_id": "eselwer-admin",
     "client_secret": "TiKbbV64bkGqW7d3hmsFHPCqf1nqiVtV",
-    "scope": "email roles"
+    "scope": "roles email openid acr"
 
 }
 

@@ -12,6 +12,12 @@ stopMinikube(){
   return $!
 }
 
+stopDockerCompose(){
+  echo "Verificando Docker-compose."
+  sudo docker-compose kill
+
+  return $!
+}
 
 stopDatabaseKeycloak(){
   DOCKER_COMPOSE_FILE="docker-compose.yml"
@@ -65,9 +71,10 @@ stopAuthBase(){
 pidMK= stopMinikube
 #pidAPIGat= stopApiGateway
 #pidAuth= stopAuthBase
-
+pidDK= stopDockerCompose
 #wait $pidDB
 wait $pidMK
+wait $pidDK
 #wait $pidAPIGat
 #wait $pidAuth
 

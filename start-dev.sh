@@ -28,6 +28,13 @@ waitService(){
 }
 
 
+startDockerCompose(){
+  echo "Verificando DockerCompose."
+  sudo docker-compose build && sudo docker-compose up -d
+  return $!
+}
+
+
 startMinikube(){
   echo "Verificando minikube."
   minikube status &> /dev/null
@@ -98,6 +105,7 @@ startAuthBase(){
   
 }
 
+startDockerCompose
 
 #startDatabaseKeycloak
 startMinikube

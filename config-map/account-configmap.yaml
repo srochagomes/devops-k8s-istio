@@ -4,6 +4,7 @@ metadata:
   namespace: app-env
   name: account-configmap
 data:  
+  PORT: '8080'
   PROFILE: prod
   DB_ADDR: '192.168.15.103'
   DB_DATABASE: account

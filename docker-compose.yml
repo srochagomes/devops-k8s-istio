@@ -1,6 +1,23 @@
 version: "3.9"
 services:
+  rabbitmq:
+    image: amd64/rabbitmq:3.12.0-management
+    container_name: 'rabbitmq'
+    environment:      
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ./data/rabbitmq/data/:/var/lib/rabbitmq/
+        - ./data/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - internal-net
   db:
+    depends_on: 
+      - rabbitmq
     image: amd64/postgres:15.3    
     networks:
       - internal-net

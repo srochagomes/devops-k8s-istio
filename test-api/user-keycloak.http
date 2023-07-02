@@ -1,0 +1,8 @@
+POST http://192.168.39.209:30427/realms/eselwer/protocol/openid-connect/token
+content-type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id=eselwer-admin
+&client_secret=TiKbbV64bkGqW7d3hmsFHPCqf1nqiVtV
+&scope=roles
+

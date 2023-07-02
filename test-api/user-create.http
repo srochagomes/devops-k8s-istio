@@ -1,0 +1,8 @@
+POST http://192.168.39.209:30427/admin/realms/eselwer/users
+content-type: application/json
+
+{
+    "username": "teste",
+    "email": "teste@teste.com",
+    "emailVerified": "true"
+}

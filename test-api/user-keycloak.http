@@ -1,8 +1,10 @@
 POST http://192.168.39.209:30427/realms/eselwer/protocol/openid-connect/token
 content-type: application/x-www-form-urlencoded
 
-grant_type=client_credentials
-&client_id=eselwer-admin
-&client_secret=TiKbbV64bkGqW7d3hmsFHPCqf1nqiVtV
+grant_type=password
+&client_id=admin-rest-client
+&client_secret=I6xAA54Lskj2qYFOeIYQuHJ6daC2Yhh3
+&username=admin-api
+&password=api-access
 &scope=roles
 

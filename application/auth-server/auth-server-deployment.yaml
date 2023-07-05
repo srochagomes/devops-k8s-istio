@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
           - name: auth-server-application-container
-            image: srochg/auth-server:0.0.1
+            image: srochg/auth-server:0.0.2
             resources:
               limits:
                 cpu: "1"
@@ -41,6 +41,26 @@ spec:
                 secretKeyRef:
                   name: app-secret
                   key: SECRET_KEYCLOAK_APP_CREDENTIAL_SECRET
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: SECRET_POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: SECRET_POSTGRES_PASSWORD
+            - name: RABBIT_USER_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: SECRET_RABBIT_USER
+            - name: RABBIT_PWD_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: SECRET_RABBIT_PWD
             envFrom:
               - configMapRef:
                   name: auth-base-configmap

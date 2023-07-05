@@ -4,12 +4,19 @@ metadata:
   namespace: app-env
   name: auth-base-configmap
 data:  
-  PROFILE: prod
   PORT: '8080'
+  PROFILE: prod
   KEYCLOAK_ADDRESS: 'keycloak-service.app-env.svc.cluster.local:8080'
   KEYCLOAK_HELM: eselwer
-  LOG_LEVEL: INFO
   KEYCLOAK_APP_CREDENTIAL_ID: ${APP_CREDENTIAL_ID}
   KEYCLOAK_APP_CREDENTIAL_SECRET: ${APP_CREDENTIAL_SECRET}
-  
+  DB_ADDR: '192.168.15.103'  
+  DB_USER: ${POSTGRES_USER}
+  DB_PASSWORD: ${POSTGRES_PASSWORD}  
+  DB_JDBC: 'jdbc:postgresql://192.168.15.103:5432/auth'
+  DB_DATABASE: auth
+  RABBIT_HOST: '192.168.15.103'
+  RABBIT_USER: ${RABBIT_USER_ENV}
+  RABBIT_PASSWORD: ${RABBIT_PWD_ENV}
+  LOG_LEVEL: INFO
   

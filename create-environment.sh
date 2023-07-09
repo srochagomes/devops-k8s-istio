@@ -49,7 +49,8 @@ installIstio(){
     fi
 }
 
-
+#Verificar metricas
+#kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
 # Applying environment keycloak 
 echo "------Create namespace: $NAMESPACE"

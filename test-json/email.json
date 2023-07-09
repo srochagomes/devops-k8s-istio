@@ -1,0 +1,14 @@
+{
+    "key": "e914f686-c619-450f-8bd4-c2f7c0ee91bf",
+    "applicationId": "eseler",
+    "userLogin": "sastestef3a@gmail.com",
+    "accountId": "ab596395-c449-4628-bc8a-170080e147dc",
+    "email": "srochg@gmail.com",
+    "subject": "Envio de email Teste",    
+    "name": "Sérgio",
+    "urlConfirmation":"http://localhost:3000",
+    "termAccept": true,
+    "emailVerified": false,
+    "status": "BLOCKED",
+    "userProviderUrl": "http://keycloak-service.app-env.svc.cluster.local:8080/admin/realms/eselwer/users/325384ab-d9f0-476b-a4e6-88cff4c6f634"
+}

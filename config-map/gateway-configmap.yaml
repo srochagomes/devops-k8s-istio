@@ -9,7 +9,7 @@ data:
   KEYCLOAK_ADDRESS: 'keycloak-service.app-env.svc.cluster.local:8080'
   AUTH_BASE_ADDRESS: 'auth-server-service.app-env.svc.cluster.local:8080'
   ACCOUNT_ADDRESS: 'account-service.app-env.svc.cluster.local:8080'
-  GATEWAY_ALLOW_ORING: http://localhost:4200, http://localhost:3000
+  GATEWAY_ALLOW_ORING: 'http://localhost:4200, http://localhost:3000'
   KEYCLOAK_HELM: eselwer
   LOG_LEVEL: ERROR  
   

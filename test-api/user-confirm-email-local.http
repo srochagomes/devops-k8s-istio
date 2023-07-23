@@ -1,6 +1,8 @@
 PUT http://localhost:8887/users/emails/ae9e7651-b4e3-4f8a-bb6c-5ba5f7959c19/verified
 content-type: application/json
 
-
+{
+    
+}
 
 

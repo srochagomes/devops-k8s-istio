@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
           - name: auth-server-application-container
-            image: srochg/auth-server:0.0.13
+            image: srochg/auth-server:0.0.15
             resources:
               limits:
                 cpu: "1"

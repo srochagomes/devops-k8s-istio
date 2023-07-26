@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
           - name: account-application-container
-            image: srochg/account:0.0.7
+            image: srochg/account:0.0.8
             resources:
               limits:
                 cpu: "1"

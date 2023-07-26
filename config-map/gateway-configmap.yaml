@@ -9,7 +9,7 @@ data:
   KEYCLOAK_ADDRESS: 'keycloak-service.app-env.svc.cluster.local:8080'
   AUTH_BASE_ADDRESS: 'auth-server-service.app-env.svc.cluster.local:8080'
   ACCOUNT_ADDRESS: 'account-service.app-env.svc.cluster.local:8080'
-  GATEWAY_ALLOW_ORING: http://localhost:4200, http://localhost:3000, http://172.20.0.1:3000, http://192.168.15.103:3000
+  GATEWAY_ALLOW_ORING: http://poc-eselwer.sytes.net:3000, http://localhost:3000, http://172.20.0.1:3000, http://192.168.15.103:3000 
   KEYCLOAK_HELM: eselwer
   LOG_LEVEL: ERROR  
   

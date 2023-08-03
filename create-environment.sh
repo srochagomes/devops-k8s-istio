@@ -16,6 +16,10 @@ RESOURCE_KEYCLOAK_STATEFUL=$DIR_KEYCLOAK"/keycloak-statefull.yaml"
 RESOURCE_KEYCLOAK_SERVICE=$DIR_KEYCLOAK"/keycloak-service.yaml"
 RESOURCE_KEYCLOAK_HPA=$DIR_KEYCLOAK"/keycloak-hpa.yaml"
 
+
+applyFowardPort() {
+  sudo iptables -t nat -A PREROUTING -p tcp --dport 8239 -j DNAT --to-destination 192.168.39.209:30041
+}
 apply() {
   
   $1

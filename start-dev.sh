@@ -117,7 +117,7 @@ startMinikube
 #waitService 8885
 #waitService 8887
 
-
+sudo systemctl restart nginx
 
 echo "Ambiente Configurado."
 

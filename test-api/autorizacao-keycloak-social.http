@@ -1,0 +1,10 @@
+POST http://192.168.39.209:30427/realms/eselwer/protocol/openid-connect/token
+content-type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&client_id=eselwer-admin
+&client_secret=TiKbbV64bkGqW7d3hmsFHPCqf1nqiVtV
+&code=75b5930e-c035-49ab-8c43-8499266721e5.4af3b4de-37f0-446e-8445-1dfc7447974b.2ef0b83a-6b09-4dd1-bf8e-b7e97ac8aaa8
+&redirect_uri=http://poc-eselwer.sytes.net:3000/?socialLogin=true
+&scope=roles
+

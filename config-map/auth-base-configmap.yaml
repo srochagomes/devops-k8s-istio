@@ -6,7 +6,7 @@ metadata:
 data:  
   PORT: '8080'
   PROFILE: prod
-  KEYCLOAK_ADDRESS: 'keycloak-service.app-env.svc.cluster.local:8080'
+  KEYCLOAK_ADDRESS: 'poc-eselwer.sytes.net:9776'
   KEYCLOAK_HELM: eselwer
   KEYCLOAK_APP_CREDENTIAL_ID: ${APP_CREDENTIAL_ID}
   KEYCLOAK_APP_CREDENTIAL_SECRET: ${APP_CREDENTIAL_SECRET}

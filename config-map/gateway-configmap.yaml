@@ -6,7 +6,7 @@ metadata:
 data:  
   PROFILE: prod
   PORT: '8080'
-  KEYCLOAK_ADDRESS: 'keycloak-service.app-env.svc.cluster.local:8080'
+  KEYCLOAK_ADDRESS: 'poc-eselwer.sytes.net:9776'
   AUTH_BASE_ADDRESS: 'auth-server-service.app-env.svc.cluster.local:8080'
   ACCOUNT_ADDRESS: 'account-service.app-env.svc.cluster.local:8080'
   GATEWAY_ALLOW_ORING: http://poc-eselwer.sytes.net:3000, http://localhost:3000, http://172.20.0.1:3000, http://192.168.15.103:3000 

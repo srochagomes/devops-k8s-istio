@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
           - name: gateway-application-container
-            image: srochg/api-gateway:0.0.11
+            image: srochg/api-gateway:0.0.13
             resources:
               limits:
                 cpu: "1"

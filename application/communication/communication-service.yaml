@@ -3,8 +3,7 @@ kind: Service
 metadata:
   namespace: app-env 
   labels:
-    app: communication-app
-    version: 21.0.2
+    app: communication-app    
   name: communication-service
   annotations:
     type: service

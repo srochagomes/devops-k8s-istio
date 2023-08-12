@@ -3,26 +3,26 @@ kind: Deployment
 metadata:
   namespace: app-env
   labels:
-    app: auth-server-app-deployment
+    app: keycloak-events-app-deployment
 
-  name: auth-server-application
+  name: keycloak-events-application
   annotations:
     type: app
-    domain: auth-server
+    domain: Keycloak
     business: Security
 spec:
   selector:
     matchLabels:
-      app: auth-server-app
+      app: keycloak-events-app
   template:
     metadata:
       labels:
-        app: auth-server-app
+        app: keycloak-events-app
         version: v1
     spec:
       containers:
-          - name: auth-server-application-container
-            image: srochg/auth-server:0.0.25
+          - name: keycloak-events-application-container
+            image: srochg/keycloak-events:0.0.6
             resources:
               limits:
                 cpu: "1"
@@ -31,16 +31,6 @@ spec:
                 cpu: "0.5"
                 memory: "512Mi"
             env:
-            - name: APP_CREDENTIAL_ID
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: SECRET_KEYCLOAK_APP_CREDENTIAL_ID
-            - name: APP_CREDENTIAL_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: SECRET_KEYCLOAK_APP_CREDENTIAL_SECRET
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
@@ -63,7 +53,7 @@ spec:
                   key: SECRET_RABBIT_PWD
             envFrom:
               - configMapRef:
-                  name: auth-base-configmap
+                  name: keycloak-events-service-configmap
             imagePullPolicy: Always
             ports:
               - containerPort: 8080
@@ -83,7 +73,7 @@ spec:
 
             livenessProbe:
               httpGet:
-                path: /_app-state/health 
+                path: /_app-state/health #/realms/master
                 port: 8080
 
               initialDelaySeconds: 30

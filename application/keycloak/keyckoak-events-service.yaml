@@ -3,17 +3,17 @@ kind: Service
 metadata:
   namespace: app-env 
   labels:
-    app: account-app    
-  name: account-service
+    app: keycloak-events-app    
+  name: keycloak-events-service
   annotations:
     type: service
-    domain: account
-    business: Users
+    domain: Keycloak
+    business: Security
   
 spec:
   type: ClusterIP
   selector:
-    app: account-app
+    app: keycloak-events-app
   ports:
     - name: http-porta-web
       protocol: TCP
